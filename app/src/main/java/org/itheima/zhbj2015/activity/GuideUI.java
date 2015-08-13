@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 /**
  * Created by yuqiqi on 2015/8/13.
  */
-public class GuideUI extends BaseActivity{
+public class GuideUI extends BaseActivity {
+
     private ViewPager mVp;
 
     @Override
@@ -23,10 +24,10 @@ public class GuideUI extends BaseActivity{
 
     private void initView() {
         mVp = (ViewPager) findViewById(R.id.guideViewpager);
-        mVp.setAdapter(null);
+        mVp.setAdapter(new GuideAdapter());
     }
 
-    private class GuideUIViewPagerAdapter extends PagerAdapter{
+    private class GuideAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {
@@ -35,7 +36,7 @@ public class GuideUI extends BaseActivity{
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            super.destroyItem(container, position, object);
+            container.removeView((View) object);
         }
 
         @Override
@@ -45,7 +46,7 @@ public class GuideUI extends BaseActivity{
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return false;
+            return view == object;
         }
     }
 }
