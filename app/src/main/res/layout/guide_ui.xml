@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <ViewPager
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
             android:id="@+id/guideViewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    </ViewPager>
+    </android.support.v4.view.ViewPager>
+    <Button
+            android:text="开始体验"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideBt"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true" android:layout_marginBottom="40dp"/>
 
-</LinearLayout>
+</RelativeLayout>
