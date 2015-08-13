@@ -11,11 +11,14 @@
     </android.support.v4.view.ViewPager>
     <Button
             android:text="开始体验"
+            android:onClick="click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/guideBt"
+            android:textColor="@color/btn_guide_textcolor"
             android:layout_alignParentBottom="true"
             android:visibility="gone"
-            android:layout_centerHorizontal="true" android:layout_marginBottom="40dp"/>
+            android:background="@drawable/btn_guide_selector"
+            android:layout_centerHorizontal="true" android:layout_marginBottom="60dp"/>
 
 </RelativeLayout>

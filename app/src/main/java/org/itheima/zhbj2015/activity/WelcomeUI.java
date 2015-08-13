@@ -20,12 +20,12 @@ import android.widget.RelativeLayout;
 public class WelcomeUI extends BaseActivity {
 
 
-    private static final String KEY_IS_FIRST = "is_first";
+    public static final String KEY_IS_FIRST = "is_first";
 
     private static final String TAG = "WelcomeUI";
 
     private RelativeLayout mRootView;
-    private final static int durationMillis = 2000;
+    private final static int durationMillis = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class WelcomeUI extends BaseActivity {
 
     private void initAnim() {
         //这里参数为true时，表示该animationSet.setInterpolator是否生效，并共享于set集合中的所有animation
-        AnimationSet animationSet = new AnimationSet(true);
+        AnimationSet animationSet = new AnimationSet(false);
         RotateAnimation rotateAnimation = new RotateAnimation(0,360,
                 RotateAnimation.RELATIVE_TO_SELF,0.5f,
                 RotateAnimation.RELATIVE_TO_SELF,0.5f);
@@ -72,11 +72,13 @@ public class WelcomeUI extends BaseActivity {
                 LogUtils.d(TAG, "进入向导界面");
                 Intent intent = new Intent(WelcomeUI.this,GuideUI.class);
                 startActivity(intent);
+                //必须要写finish(),不然会导致下一个界面迟迟都不出来
+                finish();
             }else{
                 LogUtils.d(TAG, "进入主页");
                 Intent intent = new Intent(WelcomeUI.this,MainUI.class);
                 startActivity(intent);
-
+                finish();
             }
         }
 

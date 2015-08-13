@@ -1,7 +1,10 @@
 package org.itheima.zhbj2015.activity;
 
 import org.itheima.zhbj2015.R;
+import org.itheima.zhbj2015.utils.LogUtils;
+import org.itheima.zhbj2015.utils.PreferenceUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,6 +19,8 @@ import java.util.ArrayList;
  * Created by yuqiqi on 2015/8/13.
  */
 public class GuideUI extends BaseActivity implements ViewPager.OnPageChangeListener{
+
+    private static final String TAG = "GuideUI";
 
     private ViewPager mVp;
     private Button mButton;
@@ -99,5 +104,13 @@ public class GuideUI extends BaseActivity implements ViewPager.OnPageChangeListe
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+    }
+
+    public void click(View view){
+        PreferenceUtils.setBoolean(this,WelcomeUI.KEY_IS_FIRST,false);
+        LogUtils.d(TAG, "进入主页");
+        Intent intent = new Intent(GuideUI.this,MainUI.class);
+        startActivity(intent);
+        finish();
     }
 }
