@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SlidingMenu_Lib/SlidingMenu_Lib.iml" filepath="$PROJECT_DIR$/SlidingMenu_Lib/SlidingMenu_Lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/Zhbj2015.iml" filepath="$PROJECT_DIR$/Zhbj2015.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
