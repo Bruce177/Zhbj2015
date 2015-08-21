@@ -12,12 +12,14 @@ import android.view.ViewGroup;
  * Created by yuqiqi on 2015/8/18.
  */
 public abstract class BaseFragment extends Fragment {
+    //给所有的Fragment一个context
     protected Activity mActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        //从activity中获取context
         mActivity = getActivity();
     }
 

@@ -4,13 +4,17 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <View android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1">
+    <org.itheima.zhbj2015.view.NoScrollViewPager
+            android:id="@+id/content_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-    </View>
+    </org.itheima.zhbj2015.view.NoScrollViewPager>
 
-    <RadioGroup android:layout_width="match_parent"
+    <RadioGroup
+            android:id="@+id/content_rg"
+            android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:orientation="horizontal"
@@ -24,22 +28,22 @@
                 android:id="@+id/content_tab_news"
                 style="@style/tab_style"
                 android:text="新闻"
-                android:drawableTop="@drawable/tab_home_selector"/>
+                android:drawableTop="@drawable/tab_news_selector"/>
         <RadioButton
                 android:id="@+id/content_tab_service"
                 style="@style/tab_style"
                 android:text="服务"
-                android:drawableTop="@drawable/tab_home_selector"/>
+                android:drawableTop="@drawable/tab_service_selector"/>
         <RadioButton
                 android:id="@+id/content_tab_gov"
                 style="@style/tab_style"
-                android:text="娟娟"
-                android:drawableTop="@drawable/tab_home_selector"/>
+                android:text="政务"
+                android:drawableTop="@drawable/tab_gov_selector"/>
         <RadioButton
                 android:id="@+id/content_tab_setting"
                 style="@style/tab_style"
                 android:text="设置"
-                android:drawableTop="@drawable/tab_home_selector"/>
+                android:drawableTop="@drawable/tab_setting_selector"/>
     </RadioGroup>
 
 </LinearLayout>
