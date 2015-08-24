@@ -7,6 +7,7 @@ import org.itheima.zhbj2015.R;
 import org.itheima.zhbj2015.fragment.ContentFragment;
 import org.itheima.zhbj2015.fragment.LeftFragment;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.os.Bundle;
  * Created by yuqiqi on 2015/8/13.
  */
 public class MainUI extends SlidingFragmentActivity{
+
+    private static final String	TAG_LEFT	= "left";
+    private static final String	TAG_CONTENT	= "content";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +55,17 @@ public class MainUI extends SlidingFragmentActivity{
     private void initFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.main_content, new ContentFragment());
-        ft.replace(R.id.main_left_container,new LeftFragment());
+        ft.replace(R.id.main_content, new ContentFragment(),TAG_CONTENT);
+        ft.replace(R.id.main_left_container,new LeftFragment(),TAG_LEFT);
         ft.commit();
+    }
+
+    public LeftFragment getLeftFragment(){
+        FragmentManager fm = getFragmentManager();
+        return (LeftFragment) fm.findFragmentByTag(TAG_LEFT);
+    }
+    public ContentFragment getContentFragment(){
+        FragmentManager fm = getFragmentManager();
+        return (ContentFragment) fm.findFragmentByTag(TAG_CONTENT);
     }
 }

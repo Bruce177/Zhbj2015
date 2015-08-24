@@ -18,8 +18,10 @@ public abstract class TabController {
     private FrameLayout mContentContainer;
     protected TextView mTabName;
     protected ImageView mIvMenu;
+    protected Context mContext;
 
     public TabController(Context context) {
+        this.mContext = context;
         mRootView = initView(context);
     }
 
@@ -41,6 +43,11 @@ public abstract class TabController {
 
     //初始化数据，写成public，不写成抽象，可以让子类想复写就复写，不想就算了
     public void initData(){
+
+    }
+
+    public void switchMenu(int position)
+    {
 
     }
 }

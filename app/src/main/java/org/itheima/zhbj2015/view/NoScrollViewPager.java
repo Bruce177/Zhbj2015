@@ -17,11 +17,13 @@ public class NoScrollViewPager extends LazyViewPager {
         super(context);
     }
 
+    //取消该viewpager的点击事件
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return false;
     }
 
+    //不组织点击事件传递给子view
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return false;

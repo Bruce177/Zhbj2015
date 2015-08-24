@@ -26,7 +26,8 @@ import java.util.List;
  * Created by yuqiqi on 2015/8/18.
  */
 public class ContentFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
-    public static final String	TAG	= "CONTENTFRAGMENT";
+
+    public static final String TAG = "CONTENTFRAGMENT";
 
     //页面中上部分的viewpager，新闻真正显示的地方，包括title
     private NoScrollViewPager mViewPager;
@@ -35,6 +36,8 @@ public class ContentFragment extends BaseFragment implements RadioGroup.OnChecke
     private List<TabController> mPagerDatas;
 
     private RadioGroup mRadioGroup;
+
+    private int mCurrentPositon;
 
     @Override
     protected View initView() {
@@ -66,41 +69,42 @@ public class ContentFragment extends BaseFragment implements RadioGroup.OnChecke
         mViewPager.setAdapter(new ContentPagerAdapter());
 
         mRadioGroup.setOnCheckedChangeListener(this);
-        mRadioGroup.check(R.id.content_tab_home);//该语句必须写在setOnCheckedChangeListener的后面，否则会造成，初始化首页时，仍能滑出侧滑菜单
+        mRadioGroup
+                .check(R.id.content_tab_home);//该语句必须写在setOnCheckedChangeListener的后面，否则会造成，初始化首页时，仍能滑出侧滑菜单
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        int currentItem = 0;
         switch (checkedId) {
             case R.id.content_tab_home:
                 setSlidingMenuEnable(false);
-                currentItem = 0;
+                mCurrentPositon = 0;
                 break;
             case R.id.content_tab_news:
                 setSlidingMenuEnable(true);
-                currentItem = 1;
+                mCurrentPositon = 1;
                 break;
             case R.id.content_tab_service:
                 setSlidingMenuEnable(false);
-                currentItem = 2;
+                mCurrentPositon = 2;
                 break;
             case R.id.content_tab_gov:
                 setSlidingMenuEnable(false);
-                currentItem = 3;
+                mCurrentPositon = 3;
                 break;
             case R.id.content_tab_setting:
                 setSlidingMenuEnable(false);
-                currentItem = 4;
+                mCurrentPositon = 4;
                 break;
         }
         //viewpager直接设置当前页的方法
-        mViewPager.setCurrentItem(currentItem);
+        mViewPager.setCurrentItem(mCurrentPositon);
     }
 
-    public void setSlidingMenuEnable(boolean enable){
+    public void setSlidingMenuEnable(boolean enable) {
         MainUI ui = (MainUI) mActivity;
-        ui.getSlidingMenu().setTouchModeAbove(enable ? SlidingMenu.TOUCHMODE_FULLSCREEN : SlidingMenu.TOUCHMODE_NONE);
+        ui.getSlidingMenu().setTouchModeAbove(
+                enable ? SlidingMenu.TOUCHMODE_FULLSCREEN : SlidingMenu.TOUCHMODE_NONE);
     }
 
     protected class ContentPagerAdapter extends PagerAdapter {
@@ -126,7 +130,7 @@ public class ContentFragment extends BaseFragment implements RadioGroup.OnChecke
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            LogUtils.d(TAG,"初始化"+position+"页面");
+            LogUtils.d(TAG, "初始化" + position + "页面");
 //            TextView textView = mPagerDatas.get(position);
 //            container.addView(textView);
 
@@ -136,5 +140,15 @@ public class ContentFragment extends BaseFragment implements RadioGroup.OnChecke
             tabController.initData();
             return view;
         }
+    }
+
+    /**
+     * 切换菜单的方法
+     */
+    public void switchMenu(int position) {
+        // 找到当前显示的controller
+        TabController tabController = mPagerDatas.get(mCurrentPositon);
+        // 切换菜单
+        tabController.switchMenu(position);
     }
 }
